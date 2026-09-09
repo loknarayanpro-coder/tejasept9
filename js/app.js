@@ -26,6 +26,12 @@ class AcademicHubApp {
     this.updateStats();
     this.initInteractiveLaptop();
 
+    // Dynamically set copyright year
+    const currYear = new Date().getFullYear();
+    document.querySelectorAll("#copyrightYear, .copyrightYearRef").forEach(el => {
+      el.textContent = currYear;
+    });
+
     // Check URL hash for direct links (e.g. #reg=reg-2024&dept=cse&sem=5&sub=cs3551)
     if (window.location.hash) {
       this.parseHashRoute();
