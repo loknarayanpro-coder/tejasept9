@@ -13,7 +13,7 @@ class AcademicDataService {
     
     // Toggle for connecting to the Flask backend
     this.USE_BACKEND_API = false;
-    this.BACKEND_BASE_URL = "http://127.0.0.1:5000/api";
+    this.BACKEND_BASE_URL = window.location.origin ? `${window.location.origin}/api` : "http://127.0.0.1:5000/api";
 
     this.initStorage();
   }

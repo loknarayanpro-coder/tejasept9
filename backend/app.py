@@ -4,7 +4,7 @@ Provides REST endpoints and automated link health verification for the Academic 
 Can use SQLite or an embedded JSON file store.
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import requests
 import json
@@ -12,7 +12,7 @@ import os
 import time
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=None)
 CORS(app)  # Enable Cross-Origin requests from the frontend
 
 DATA_FILE = os.path.join(os.path.dirname(__file__), "academic_store.json")
@@ -202,6 +202,26 @@ def verify_link():
             "message": str(e),
             "verified_at": datetime.utcnow().isoformat()
         })
+
+STATIC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+# Serve Frontend Static Assets and Single-Page Application Index
+@app.route("/", defaults={"path": ""}, methods=["GET"])
+@app.route("/<path:path>", methods=["GET"])
+def serve_frontend(path):
+    # Do not intercept API requests
+    if path.startswith("api"):
+        return jsonify({"error": "API route not found"}), 404
+        
+    if not path or path == "index.html":
+        return send_from_directory(STATIC_DIR, "index.html")
+    
+    file_path = os.path.join(STATIC_DIR, path)
+    if os.path.isfile(file_path):
+        return send_from_directory(STATIC_DIR, path)
+        
+    # Fallback to index.html for client-side routing
+    return send_from_directory(STATIC_DIR, "index.html")
 
 if __name__ == "__main__":
     print("🎓 Student Academic Hub Backend starting at http://127.0.0.1:5000")
