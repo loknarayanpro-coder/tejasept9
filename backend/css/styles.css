@@ -1280,6 +1280,21 @@ button {
   font-size: 0.8rem;
   color: var(--text-muted);
   margin-top: 0.6rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.hint-sep {
+  opacity: 0.45;
+}
+
+.laptop-copyright-tag {
+  color: var(--primary-light);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  letter-spacing: 0.01em;
 }
 
 .hint-mouse-icon {
@@ -2298,10 +2313,57 @@ button {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-glass);
   font-size: 0.82rem;
+}
+
+.footer-copyright-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.copyright-line {
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.copyright-symbol {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.copyright-small-notice {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footer-bottom-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.copyright-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+  letter-spacing: 0.02em;
 }
 
 /* Button Variants */
