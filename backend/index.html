@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Academic Hub - Unified college academic resource portal providing direct verified links to official syllabus, lecture notes, video lectures, lab manuals, and previous year question papers.">
+  <meta name="keywords" content="student academic hub, engineering syllabus, lecture notes, question papers, nptel, anna university, cse, distributed computing, lab manual">
+  <meta name="author" content="Student Academic Hub">
+  <title>Student Academic Hub – College Academic Resource Portal</title>
+
+  <!-- Favicon / Title Icon -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  <link rel="apple-touch-icon" href="assets/logo.jpg">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==================== Site Header ==================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Brand Identity with User Logo -->
+      <a href="#" class="brand" id="brandLogoBtn" title="Student Academic Hub Home">
+        <img src="assets/logo.jpg" alt="Student Academic Hub Logo" class="brand-logo-img">
+        <div class="brand-text">
+          <span class="brand-title">Student Academic Hub</span>
+          <span class="brand-tag">Academic Resource Directory</span>
+        </div>
+      </a>
+
+      <!-- Header Actions with Handcrafted Vector Icons -->
+      <div class="header-actions">
+        <button class="header-search-trigger" id="headerSearchTrigger" title="Search subjects or resources (Ctrl+K)">
+          <span class="icon-svg-wrap">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 20L16.2 16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="search-text-label">Quick Search</span>
+          <kbd class="search-kbd">Ctrl+K</kbd>
+        </button>
+
+        <button class="btn-icon" id="openFavsBtn" title="View Pinned Subjects">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <button class="btn-icon" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18" id="themeSvgIcon">
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 2V4M12 20V22M4 12H2M22 12H20M5.64 5.64L4.22 4.22M19.78 19.78L18.36 18.36M5.64 18.36L4.22 19.78M19.78 4.22L18.36 5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <button class="btn-primary-outline" id="openAdminBtn" title="Open Admin Portal">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M19.4 15A1.65 1.65 0 0019.73 16.82L20 17.15A2 2 0 0117.17 20L16.84 19.67A1.65 1.65 0 0015 19.4V20A2 2 0 0111 20V19.4A1.65 1.65 0 009.18 19.07L8.85 19.4A2 2 0 016 16.57L6.33 16.24A1.65 1.65 0 006 14.4H5.4A2 2 0 015.4 10.4H6A1.65 1.65 0 006.33 8.58L6 8.25A2 2 0 018.83 5.42L9.16 5.75A1.65 1.65 0 0011 6V5.4A2 2 0 0115 5.4V6A1.65 1.65 0 0016.82 6.33L17.15 6A2 2 0 0120 8.83L19.67 9.16A1.65 1.65 0 0019.4 11V11.6A1.65 1.65 0 0019.4 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Admin</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== Dynamic Breadcrumbs Bar ==================== -->
+  <nav class="breadcrumbs-bar" aria-label="Breadcrumb navigation">
+    <div class="container">
+      <ul class="breadcrumbs-list" id="breadcrumbsList">
+        <li class="breadcrumb-item">
+          <button class="breadcrumb-btn" onclick="window.app.resetNavigation()">
+            <span class="breadcrumb-home-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+                <path d="M3 10.5L12 3L21 10.5V20C21 20.5523 20.5523 21 20 21H15V14H9V21H4C3.44772 21 3 20.5523 3 20V10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Home</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== Hero & Overview Section ==================== -->
+  <section class="hero-section">
+    <div class="container">
+      <!-- User Title Logo -->
+      <div class="hero-title-logo-badge">
+        <img src="assets/logo.jpg" alt="Student Academic Hub Title Logo" class="hero-title-logo-img">
+      </div>
+
+      <div class="hero-badge">
+        <span class="badge-icon-svg">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>100% Direct Official & Authorized Educational Links</span>
+      </div>
+      <h1 class="hero-title">
+        All Your Academic Resources in <span class="gradient-text">One Place</span>
+      </h1>
+      <p class="hero-subtitle">
+        Curated syllabi, lecture notes, video playlists, lab manuals, and previous university question papers. No hosted copyrighted files—strictly verified external portals.
+      </p>
+
+      <!-- Global Hero Search -->
+      <div class="hero-search-wrapper">
+        <div class="hero-search-box">
+          <span class="search-icon-hero">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 20L16.2 16.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <input type="text" id="heroSearchInput" class="hero-search-input" placeholder="Search subject (e.g. CS3551, Distributed Computing, Networks)..." aria-label="Subject search input">
+          <button class="hero-search-btn" id="heroSearchBtn">Find Resources</button>
+        </div>
+      </div>
+
+      <!-- ==================== Interactive 3D Laptop Showcase ==================== -->
+      <div class="laptop-showcase-wrapper" id="laptopShowcaseSection">
+        <!-- Top Demo Mode Navigation Pills (Matching Demo Pill Style) -->
+        <div class="demo-showcase-nav" id="showcaseNavGroup">
+          <span class="showcase-nav-label">Interactive Showcase:</span>
+          <button class="showcase-nav-pill active" data-mode="resources">Academic Hub</button>
+          <button class="showcase-nav-pill" data-mode="flow">Workflow</button>
+          <button class="showcase-nav-pill" data-mode="verification">Link Verifier</button>
+        </div>
+
+        <!-- Architectural Backdrop & 3D Stage -->
+        <div class="laptop-stage-area" id="laptopStageArea">
+          <!-- Architectural Arch Backdrop from Demo -->
+          <div class="architectural-arch-backdrop">
+            <div class="arch-fluted-curtain"></div>
+          </div>
+
+          <!-- 3D Scene -->
+          <div class="laptop-3d-scene" id="laptop3DScene">
+            <div class="laptop-body" id="interactiveLaptop">
+              <!-- Screen Lid -->
+              <div class="laptop-lid">
+                <div class="laptop-bezel">
+                  <div class="laptop-camera"></div>
+                  
+                  <!-- Screen Display Area -->
+                  <div class="laptop-screen" id="laptopScreenDisplay">
+                    <!-- Browser Chrome Header Bar -->
+                    <div class="screen-browser-bar">
+                      <div class="browser-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                      </div>
+                      <div class="browser-url-pill">
+                        🔒 academic-hub.portal/2024-reg/cse/sem5/cs3551
+                      </div>
+                      <div class="browser-badge">Active 200 OK</div>
+                    </div>
+
+                    <!-- Screen View 1: Academic Resource Hub -->
+                    <div class="screen-view active" id="screenView-resources">
+                      <div class="screen-hub-header">
+                        <div class="screen-top-meta">
+                          <span class="screen-tag">2024 Regulation</span>
+                          <span class="screen-tag">CSE • Sem 5</span>
+                          <span class="screen-tag pulse">9 Categories</span>
+                        </div>
+                        <h4 class="screen-title">CS3551 – Distributed Computing</h4>
+                        <div class="screen-chips">
+                          <span class="chip-item active">📘 Syllabus</span>
+                          <span class="chip-item">📝 Notes</span>
+                          <span class="chip-item">🎥 Videos</span>
+                          <span class="chip-item">🧪 Labs</span>
+                          <span class="chip-item">📄 Papers</span>
+                        </div>
+                      </div>
+
+                      <div class="screen-cards-mini-grid">
+                        <div class="screen-card">
+                          <div class="screen-card-header">
+                            <span class="screen-source official">🏛️ Official CAC</span>
+                            <span class="screen-status-pill">Active</span>
+                          </div>
+                          <strong>Anna University CS3551 Syllabus</strong>
+                          <p>Units I-V objectives, credit breakdown & textbooks</p>
+                          <div class="screen-card-foot">Direct Official Portal ↗</div>
+                        </div>
+
+                        <div class="screen-card">
+                          <div class="screen-card-header">
+                            <span class="screen-source external">🎥 NPTEL</span>
+                            <span class="screen-status-pill">Active</span>
+                          </div>
+                          <strong>IIT Distributed Systems Series</strong>
+                          <p>Prof. Rajiv Misra 40-hour lecture course</p>
+                          <div class="screen-card-foot">Open External Source ↗</div>
+                        </div>
+
+                        <div class="screen-card">
+                          <div class="screen-card-header">
+                            <span class="screen-source official">🧪 MoE V-Labs</span>
+                            <span class="screen-status-pill">Active</span>
+                          </div>
+                          <strong>Distributed Sockets & RPC Manual</strong>
+                          <p>Virtual simulations & observation guide</p>
+                          <div class="screen-card-foot">Virtual Labs Govt ↗</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Screen View 2: Flow Navigation Step-by-step -->
+                    <div class="screen-view" id="screenView-flow">
+                      <div class="screen-flow-step-bar">
+                        <span class="step-badge done">1. 2024 Reg</span>
+                        <span class="step-arrow">→</span>
+                        <span class="step-badge done">2. CSE</span>
+                        <span class="step-arrow">→</span>
+                        <span class="step-badge done">3. Sem 5</span>
+                        <span class="step-arrow">→</span>
+                        <span class="step-badge active">4. CS3551</span>
+                      </div>
+                      <div class="screen-flow-box">
+                        <h5>Direct Zero-Clutter Academic Flow</h5>
+                        <p>Jump from university regulation to subject resources in 4 clicks.</p>
+                        <div class="flow-mini-breadcrumb">
+                          🏠 Home › 📜 2024 Reg › 💻 CSE › 📅 Sem 5 › ⚡ CS3551
+                        </div>
+                        <div class="flow-preview-pills">
+                          <span>CSE (Computer Science)</span>
+                          <span>AI & DS</span>
+                          <span>IT</span>
+                          <span>ECE</span>
+                          <span>MECH</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Screen View 3: Automatic Link Health Verification -->
+                    <div class="screen-view" id="screenView-verification">
+                      <div class="screen-verify-box">
+                        <div class="verify-radar-circle">
+                          <span class="radar-dot"></span>
+                        </div>
+                        <h5>Automatic Link Health Verification</h5>
+                        <p>Continuous monitoring of external university & educational links</p>
+                        <div class="verify-stat-row">
+                          <div class="verify-stat"><span class="val">54/54</span><span class="lbl">Active Links</span></div>
+                          <div class="verify-stat"><span class="val">100%</span><span class="lbl">Reachability</span></div>
+                          <div class="verify-stat"><span class="val">95ms</span><span class="lbl">Avg Latency</span></div>
+                        </div>
+                        <span class="verify-status-badge">● All Links Verified & Reachable</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Glare Overlay that shifts with cursor -->
+                  <div class="screen-glare" id="laptopScreenGlare"></div>
+                </div>
+              </div>
+
+              <!-- Screen Hinge -->
+              <div class="laptop-hinge"></div>
+
+              <!-- Laptop Keyboard Base -->
+              <div class="laptop-base">
+                <div class="laptop-deck">
+                  <div class="keyboard-grid-mock">
+                    <div class="key-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                    <div class="key-row"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                    <div class="key-row space"><span></span><span class="spacebar"></span><span></span></div>
+                  </div>
+                  <!-- Metallic Trackpad with Copper Trim -->
+                  <div class="laptop-trackpad"></div>
+                </div>
+                <!-- Copper Accent Lip matching demo podium trim -->
+                <div class="laptop-copper-lip"></div>
+              </div>
+            </div>
+
+            <!-- Realistic Dynamic 3D Ground Shadow -->
+            <div class="laptop-ground-shadow" id="laptopGroundShadow"></div>
+          </div>
+        </div>
+
+        <!-- Interaction Prompt -->
+        <div class="laptop-interaction-hint">
+          <span class="hint-mouse-icon">🖱️</span>
+          <span>Interactive 3D Preview: Move cursor or touch to rotate the laptop • Click tabs above to switch showcase</span>
+        </div>
+      </div>
+
+      <!-- Portal Statistics & Health Strip -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <span class="stat-dot"></span>
+          <span>Status:</span>
+          <strong style="color:var(--status-verified);">All Links Verified Active</strong>
+        </div>
+        <div class="stat-item">
+          <span>📚 Subjects:</span>
+          <span class="stat-number" id="statCountSubjects">--</span>
+        </div>
+        <div class="stat-item">
+          <span>🔗 External Resources:</span>
+          <span class="stat-number" id="statCountLinks">--</span>
+        </div>
+        <div class="stat-item">
+          <span>🏛️ Regulations:</span>
+          <span class="stat-number" id="statCountRegs">--</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Designated Advertisement Banner ==================== -->
+  <div class="container">
+    <div class="ad-banner-slot" id="topAdSlot">
+      <span class="ad-label">Advertisement / Sponsored</span>
+      <div class="ad-content-mock">
+        <div class="ad-text-group">
+          <h4>🎓 Prep for Technical Interviews & Campus Placements</h4>
+          <p>Practice 500+ curated system design and algorithmic challenges curated for computer science students.</p>
+        </div>
+        <button class="ad-cta-btn" onclick="window.app.showToast('Demo Ad: Redirects to partner placement learning program.')">Explore Programs →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Flow Stepper Progress Bar ==================== -->
+  <main class="container" id="flowNavContainer">
+    <nav class="flow-stepper-container" aria-label="Academic navigation flow">
+      <div class="stepper-progress">
+        <div class="stepper-step active" data-view="home" title="Select Curriculum Regulation">
+          <div class="step-num">1</div>
+          <div class="step-info">
+            <span class="step-label">Step 1</span>
+            <span class="step-value" id="stepVal-reg">Regulation</span>
+          </div>
+        </div>
+
+        <div class="stepper-step" data-view="departments" title="Select Department Branch">
+          <div class="step-num">2</div>
+          <div class="step-info">
+            <span class="step-label">Step 2</span>
+            <span class="step-value" id="stepVal-dept">Department</span>
+          </div>
+        </div>
+
+        <div class="stepper-step" data-view="semesters" title="Select Academic Semester">
+          <div class="step-num">3</div>
+          <div class="step-info">
+            <span class="step-label">Step 3</span>
+            <span class="step-value" id="stepVal-sem">Semester</span>
+          </div>
+        </div>
+
+        <div class="stepper-step" data-view="subjects" title="Select Subject Course">
+          <div class="step-num">4</div>
+          <div class="step-info">
+            <span class="step-label">Step 4</span>
+            <span class="step-value" id="stepVal-sub">Subject</span>
+          </div>
+        </div>
+
+        <div class="stepper-step" data-view="resources" title="Access Subject Resources">
+          <div class="step-num">5</div>
+          <div class="step-info">
+            <span class="step-label">Step 5</span>
+            <span class="step-value" id="stepVal-res">Resource Hub</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ==================== VIEW 1: Regulations ==================== -->
+    <section class="portal-view active" id="view-home">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Select Curriculum Regulation</h2>
+          <p>Choose your enrolled university academic syllabus regulation to proceed.</p>
+        </div>
+      </div>
+      <div class="card-grid" id="regulationsGrid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: Departments ==================== -->
+    <section class="portal-view" id="view-departments">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Select Your Department</h2>
+          <p>Browse by your engineering discipline or academic major.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="window.app.navigateTo('home')">← Change Regulation</button>
+      </div>
+      <div class="card-grid" id="departmentsGrid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: Semesters ==================== -->
+    <section class="portal-view" id="view-semesters">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2>Select Semester</h2>
+          <p>Choose your current semester to view prescribed course subjects.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="window.app.navigateTo('departments')">← Change Department</button>
+      </div>
+      <div class="semester-grid" id="semestersGrid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: Subjects ==================== -->
+    <section class="portal-view" id="view-subjects">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2 id="subjectsViewTitle">Semester Subjects</h2>
+          <p>Select any subject card to view all 9 verified resource categories.</p>
+        </div>
+        <button class="btn btn-secondary" onclick="window.app.navigateTo('semesters')">← Change Semester</button>
+      </div>
+      <div class="card-grid" id="subjectsGrid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 5: Subject Resource Hub ==================== -->
+    <section class="portal-view" id="view-resources">
+      <!-- Subject Header Banner -->
+      <div class="subject-detail-hero">
+        <div class="subject-detail-top">
+          <span class="subject-code-tag" id="resourceHeroCode" style="font-size: 1rem; padding: 0.35rem 0.85rem;">CODE</span>
+          <div style="display:flex; gap:0.6rem;">
+            <button class="btn btn-secondary" id="resourceHeroFavBtn" style="font-size:0.85rem;">☆ Add to Favorites</button>
+            <button class="btn btn-secondary" onclick="window.app.navigateTo('subjects')" style="font-size:0.85rem;">← Back to Subjects</button>
+          </div>
+        </div>
+        <h2 class="subject-detail-title" id="resourceHeroTitle">Subject Title</h2>
+        <p class="subject-detail-desc" id="resourceHeroDesc">Subject syllabus overview and core learning objectives.</p>
+        <div class="subject-meta-chips" id="resourceHeroMeta">
+          <!-- Metadata chips injected -->
+        </div>
+      </div>
+
+      <!-- Quick Category Jump / Filter Bar -->
+      <div class="section-header" style="margin-bottom: 0.75rem;">
+        <h3 style="font-size: 1.15rem; color: var(--text-secondary);">Browse by Category</h3>
+      </div>
+      <div class="category-quick-filters" id="categoryQuickFilters">
+        <!-- Buttons injected: View Syllabus | Notes | Videos | CW | Lab Manual | Practical Questions | Question Papers | Important | Other -->
+      </div>
+
+      <!-- Resource Categories Container (The 9 Categories) -->
+      <div id="subjectResourcesContainer">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== Global Live Search Modal ==================== -->
+  <div class="modal-backdrop" id="searchModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Quick Subject & Resource Finder</h3>
+        <button class="modal-close-btn" id="closeSearchModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-modal-input-box">
+          <span class="icon-svg-wrap" style="color:var(--primary);">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20L16.2 16.2" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <input type="text" id="modalSearchInput" class="search-modal-input" placeholder="Type subject code, name, topic (e.g. CS3551, Raft, Socket, Python)..." autocomplete="off">
+        </div>
+        <div class="search-results-list" id="searchResultsContainer">
+          <!-- Search results dynamically rendered -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Favorites / Pinned Subjects Modal ==================== -->
+  <div class="modal-backdrop" id="favoritesModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span style="color:var(--primary); display:flex; align-items:center;">
+            <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Pinned Subjects</h3>
+        </div>
+        <button class="modal-close-btn" id="closeFavsBtn">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:1rem;">
+          Your bookmarked subjects for quick 1-click access anytime:
+        </p>
+        <div class="search-results-list" id="favoritesListContainer">
+          <!-- Favorites list -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Admin Dashboard Modal ==================== -->
+  <div class="modal-backdrop" id="adminModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <span style="color:var(--primary); display:flex; align-items:center;">
+            <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+              <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M19.4 15A1.65 1.65 0 0019.73 16.82L20 17.15A2 2 0 0117.17 20L16.84 19.67A1.65 1.65 0 0015 19.4V20A2 2 0 0111 20V19.4A1.65 1.65 0 009.18 19.07L8.85 19.4A2 2 0 016 16.57L6.33 16.24A1.65 1.65 0 006 14.4H5.4A2 2 0 015.4 10.4H6A1.65 1.65 0 006.33 8.58L6 8.25A2 2 0 018.83 5.42L9.16 5.75A1.65 1.65 0 0011 6V5.4A2 2 0 0115 5.4V6A1.65 1.65 0 0016.82 6.33L17.15 6A2 2 0 0120 8.83L19.67 9.16A1.65 1.65 0 0019.4 11V11.6A1.65 1.65 0 0019.4 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div>
+            <h3>Academic Hub Admin Dashboard</h3>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Manage Subjects, Links & Run Automatic Link Verification</span>
+          </div>
+        </div>
+        <button class="modal-close-btn close-admin-modal">✕</button>
+      </div>
+
+      <!-- Admin Tabs -->
+      <div style="display:flex; gap:0.5rem; padding: 0.75rem 1.5rem; background: var(--bg-tertiary); border-bottom: 1px solid var(--border-glass); overflow-x: auto;">
+        <button class="admin-tab-btn active btn-secondary" data-tab="subjects" style="padding:0.4rem 0.9rem; font-size:0.82rem;">Subjects Management</button>
+        <button class="admin-tab-btn btn-secondary" data-tab="addLink" style="padding:0.4rem 0.9rem; font-size:0.82rem;">+ Add Resource Link</button>
+        <button class="admin-tab-btn btn-secondary" data-tab="verification" style="padding:0.4rem 0.9rem; font-size:0.82rem;">Automated Link Checker</button>
+        <button class="admin-tab-btn btn-secondary" data-tab="database" style="padding:0.4rem 0.9rem; font-size:0.82rem;">Database & Flask Sync</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Tab 1: Subject CRUD -->
+        <div class="admin-tab-content" id="adminTab_subjects">
+          <form id="adminSubjectForm" style="margin-bottom: 2rem; background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
+            <h4 style="margin-bottom: 1rem; color: var(--text-primary);" id="adminSubjectFormHeading">Add or Edit Subject</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="adminSubCode">Subject Code *</label>
+                <input type="text" id="adminSubCode" class="form-control" placeholder="e.g. CS3551" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adminSubName">Subject Name *</label>
+                <input type="text" id="adminSubName" class="form-control" placeholder="e.g. Distributed Computing" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="adminSubRegSelect">Regulation</label>
+                <select id="adminSubRegSelect" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adminSubDeptSelect">Department</label>
+                <select id="adminSubDeptSelect" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adminSubSemSelect">Semester</label>
+                <select id="adminSubSemSelect" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adminSubCredits">Credits</label>
+                <input type="number" id="adminSubCredits" class="form-control" value="3" min="1" max="10">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adminSubCategory">Category</label>
+                <select id="adminSubCategory" class="form-control">
+                  <option value="Professional Core">Professional Core</option>
+                  <option value="Professional Elective">Professional Elective</option>
+                  <option value="Open Elective">Open Elective</option>
+                  <option value="Laboratory">Laboratory Course</option>
+                  <option value="Foundation">Foundation Course</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adminSubSummary">Subject Summary / Overview</label>
+              <textarea id="adminSubSummary" class="form-control" rows="2" placeholder="Summary of course contents, units, and learning objectives..."></textarea>
+            </div>
+
+            <div style="display:flex; gap:0.5rem; justify-content:flex-end;">
+              <button type="button" class="btn btn-secondary" id="adminSubCancelEditBtn" style="display:none;" onclick="window.adminPortal.resetSubjectForm()">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="adminSubjectSubmitBtn">Add Subject</button>
+            </div>
+          </form>
+
+          <h4 style="margin-bottom:0.75rem;">Existing Subjects Catalog</h4>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--border-glass); text-align:left; color:var(--text-muted);">
+                  <th style="padding:0.5rem;">Code</th>
+                  <th style="padding:0.5rem;">Subject Name</th>
+                  <th style="padding:0.5rem;">Dept & Sem</th>
+                  <th style="padding:0.5rem;">Resources</th>
+                  <th style="padding:0.5rem; text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminSubjectsTableBody">
+                <!-- Injected via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 2: Add Link Under 9 Categories -->
+        <div class="admin-tab-content" id="adminTab_addLink" style="display:none;">
+          <form id="adminLinkForm" style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
+            <h4 style="margin-bottom: 1rem;">Add Resource Link</h4>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="adminLinkSubjectSelect">Target Subject *</label>
+                <select id="adminLinkSubjectSelect" class="form-control" required></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="adminLinkCategorySelect">Resource Category *</label>
+                <select id="adminLinkCategorySelect" class="form-control" required>
+                  <option value="syllabus">📘 Syllabus</option>
+                  <option value="notes">📝 Notes</option>
+                  <option value="videos">🎥 Explanation Videos</option>
+                  <option value="classwork">📑 Classwork (CW)</option>
+                  <option value="labManual">🧪 Lab Manual</option>
+                  <option value="practicalQuestions">💻 Practical Questions</option>
+                  <option value="questionPapers">📄 Previous Question Papers</option>
+                  <option value="importantQuestions">⭐ Important Questions</option>
+                  <option value="otherResources">🔗 Other Resources</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adminLinkTitle">Link Title / Document Name *</label>
+              <input type="text" id="adminLinkTitle" class="form-control" placeholder="e.g. Official Anna Univ CS3551 Syllabus Specification" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adminLinkUrl">External Source URL (http/https) *</label>
+              <input type="url" id="adminLinkUrl" class="form-control" placeholder="https://cac.annauniv.edu" required>
+              <small style="color:var(--text-muted); font-size:0.75rem;">Note: Provide direct links to original official/educational portals. Do not link copyright files.</small>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="adminLinkSource">Source Organization / Host</label>
+                <input type="text" id="adminLinkSource" class="form-control" placeholder="e.g. Anna University CAC / NPTEL / MIT OCW">
+              </div>
+              <div class="form-group" style="display:flex; align-items:flex-end; padding-bottom:0.5rem;">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" id="adminLinkIsOfficial">
+                  <span>🏛️ Official University / Govt Source</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="adminLinkDesc">Short Description</label>
+              <textarea id="adminLinkDesc" class="form-control" rows="2" placeholder="Brief summary of what this external resource covers..."></textarea>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end;">
+              <button type="submit" class="btn btn-primary">+ Add Resource Link</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Tab 3: Automatic Link Verification Engine -->
+        <div class="admin-tab-content" id="adminTab_verification" style="display:none;">
+          <div style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
+            <h4>Automatic Link Health Verification</h4>
+            <p style="color:var(--text-secondary); font-size:0.88rem; margin:0.5rem 0 1.25rem;">
+              Scan and test all external URLs across all cataloged subjects to confirm host availability, HTTP 200 responses, and refresh verification timestamps.
+            </p>
+
+            <button class="btn btn-primary" id="btnRunBatchVerification">
+              🔍 Run Batch Link Verification
+            </button>
+
+            <div id="verificationProgressBox" style="display:none; margin-top:1.5rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.35rem;">
+                <span>Scanning Links...</span>
+                <span id="verificationProgressText">0%</span>
+              </div>
+              <div style="height:8px; background:var(--bg-tertiary); border-radius:var(--radius-pill); overflow:hidden;">
+                <div id="verificationProgressBar" style="width:0%; height:100%; background:var(--primary); transition:width 0.2s;"></div>
+              </div>
+              <p id="verificationStatusText" style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Database & Flask Integration -->
+        <div class="admin-tab-content" id="adminTab_database" style="display:none;">
+          <div style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-glass);">
+            <h4>Data Backup, Restore & Flask Backend</h4>
+            <p style="color:var(--text-secondary); font-size:0.88rem; margin:0.5rem 0 1.25rem;">
+              Export the current catalog as a JSON seed file for a Flask REST API backend, or restore defaults.
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:1.5rem;">
+              <button class="btn btn-secondary" id="btnExportJson">📥 Export JSON Database</button>
+              
+              <label class="btn btn-secondary" style="cursor:pointer; margin:0;">
+                📤 Import JSON File
+                <input type="file" id="importJsonInput" accept=".json" style="display:none;">
+              </label>
+
+              <button class="btn btn-danger" id="btnResetDefaults">⚠️ Reset to Initial Seed Data</button>
+            </div>
+
+            <div style="background:var(--bg-tertiary); padding:1rem; border-radius:var(--radius-sm); font-size:0.82rem; color:var(--text-secondary);">
+              <strong>Flask Backend Integration:</strong>
+              A ready-to-run Python Flask backend with SQLite storage and automatic URL checking is provided in the <code>backend/</code> folder. Set <code>window.academicService.USE_BACKEND_API = true</code> in <code>js/api.js</code> to connect immediately!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary close-admin-modal">Close Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Toast Notifications ==================== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==================== Site Footer ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
+            <img src="assets/logo.jpg" alt="Student Academic Hub Logo" class="footer-logo-img">
+            <strong style="font-size:1.15rem; color:var(--text-primary);">Student Academic Hub</strong>
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1rem;">
+            A student-first open academic resource directory connecting learners to verified educational repositories, NPTEL lectures, university curricula, and laboratory simulations.
+          </p>
+          <div class="footer-disclaimer-box">
+            <strong>⚖️ Copyright & Fair Use Notice:</strong>
+            Student Academic Hub does NOT host, upload, store, or redistribute any copyrighted PDFs, videos, question papers, or course materials. All resource cards strictly link out directly to original official university portals or authorized educational platforms.
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size:0.95rem; margin-bottom:0.75rem; color:var(--text-primary);">Quick Regulations</h4>
+          <ul style="list-style:none; font-size:0.85rem; display:flex; flex-direction:column; gap:0.45rem;">
+            <li><a href="#" onclick="event.preventDefault(); window.app.selectRegulation('reg-2024');">2024 Regulation (Autonomous)</a></li>
+            <li><a href="#" onclick="event.preventDefault(); window.app.selectRegulation('reg-2021');">2021 Regulation (Anna Univ)</a></li>
+            <li><a href="#" onclick="event.preventDefault(); window.app.selectRegulation('reg-2017');">2017 Regulation Archive</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-size:0.95rem; margin-bottom:0.75rem; color:var(--text-primary);">Official Portals</h4>
+          <ul style="list-style:none; font-size:0.85rem; display:flex; flex-direction:column; gap:0.45rem;">
+            <li><a href="https://cac.annauniv.edu" target="_blank" rel="noopener noreferrer">Anna University CAC ↗</a></li>
+            <li><a href="https://nptel.ac.in" target="_blank" rel="noopener noreferrer">NPTEL / SWAYAM ↗</a></li>
+            <li><a href="https://vlab.co.in" target="_blank" rel="noopener noreferrer">MoE Virtual Labs ↗</a></li>
+            <li><a href="https://www.aicte-india.org" target="_blank" rel="noopener noreferrer">AICTE Portal ↗</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Student Academic Hub • Designed for Engineering & College Students</span>
+        <span>Built with Clean HTML5, Vanilla CSS & Modular JavaScript • Ready for Flask Backend</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="js/icons.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

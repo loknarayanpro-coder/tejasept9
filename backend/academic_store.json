@@ -1,0 +1,892 @@
+{
+  "regulations": [
+    {
+      "id": "reg-2024",
+      "year": "2024",
+      "name": "2024 Regulation (Autonomous & CBCS)",
+      "isLatest": true,
+      "description": "Latest curriculum with AI/ML integration and industry credits."
+    },
+    {
+      "id": "reg-2021",
+      "year": "2021",
+      "name": "2021 Regulation (Anna Univ & Affiliated)",
+      "isLatest": false,
+      "description": "Standard outcome-based education (OBE) curriculum."
+    },
+    {
+      "id": "reg-2017",
+      "year": "2017",
+      "name": "2017 Regulation",
+      "isLatest": false,
+      "description": "Prior CBCS syllabus system."
+    }
+  ],
+  "departments": [
+    {
+      "id": "cse",
+      "code": "CSE",
+      "name": "Computer Science & Engineering",
+      "icon": "💻",
+      "color": "#c58f68"
+    },
+    {
+      "id": "aids",
+      "code": "AI & DS",
+      "name": "Artificial Intelligence & Data Science",
+      "icon": "🤖",
+      "color": "#d47a60"
+    },
+    {
+      "id": "it",
+      "code": "IT",
+      "name": "Information Technology",
+      "icon": "🌐",
+      "color": "#d4a373"
+    },
+    {
+      "id": "ece",
+      "code": "ECE",
+      "name": "Electronics & Communication Engineering",
+      "icon": "⚡",
+      "color": "#e09f55"
+    },
+    {
+      "id": "mech",
+      "code": "MECH",
+      "name": "Mechanical Engineering",
+      "icon": "⚙️",
+      "color": "#a3886f"
+    }
+  ],
+  "semesters": [
+    {
+      "id": 1,
+      "name": "Semester 1",
+      "badge": "Year 1"
+    },
+    {
+      "id": 2,
+      "name": "Semester 2",
+      "badge": "Year 1"
+    },
+    {
+      "id": 3,
+      "name": "Semester 3",
+      "badge": "Year 2"
+    },
+    {
+      "id": 4,
+      "name": "Semester 4",
+      "badge": "Year 2"
+    },
+    {
+      "id": 5,
+      "name": "Semester 5",
+      "badge": "Year 3"
+    },
+    {
+      "id": 6,
+      "name": "Semester 6",
+      "badge": "Year 3"
+    },
+    {
+      "id": 7,
+      "name": "Semester 7",
+      "badge": "Year 4"
+    },
+    {
+      "id": 8,
+      "name": "Semester 8",
+      "badge": "Year 4"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "cs3551",
+      "code": "CS3551",
+      "name": "Distributed Computing",
+      "regulationId": "reg-2024",
+      "departmentId": "cse",
+      "semesterId": 5,
+      "credits": 3,
+      "category": "Professional Core",
+      "summary": "Principles of distributed systems, message passing, synchronization, distributed shared memory, consensus, and fault-tolerant architectures.",
+      "tags": [
+        "Distributed Systems",
+        "RPC",
+        "Consensus",
+        "Lamport Clocks",
+        "Cloud"
+      ],
+      "resources": {
+        "syllabus": [
+          {
+            "id": "res-syl-1",
+            "title": "Official Anna University CS3551 Syllabus Specification",
+            "url": "https://cac.annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University CAC Portal",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:30:00Z",
+            "description": "Direct course objectives, unit-wise syllabus breakdown (Units I to V), and reference textbooks."
+          },
+          {
+            "id": "res-syl-2",
+            "title": "AICTE Model Curriculum - Distributed Systems Track",
+            "url": "https://www.aicte-india.org",
+            "isOfficial": true,
+            "source": "AICTE Official",
+            "status": "active",
+            "lastVerified": "2026-09-07T14:15:00Z",
+            "description": "Curriculum guidelines and recommended credit distribution for distributed systems."
+          }
+        ],
+        "notes": [
+          {
+            "id": "res-not-1",
+            "title": "GeeksforGeeks Distributed Systems Complete Lecture Series",
+            "url": "https://www.geeksforgeeks.org/distributed-systems-tutorial/",
+            "isOfficial": false,
+            "source": "GeeksforGeeks",
+            "status": "active",
+            "lastVerified": "2026-09-08T12:00:00Z",
+            "description": "In-depth chapter notes on logical clocks, mutual exclusion algorithms, distributed transactions, and replication."
+          },
+          {
+            "id": "res-not-2",
+            "title": "Distributed Systems Notes & Slides by Paul Krzyzanowski (Rutgers)",
+            "url": "https://pk.org/teaching/cs417/",
+            "isOfficial": false,
+            "source": "Rutgers CS",
+            "status": "active",
+            "lastVerified": "2026-09-06T18:20:00Z",
+            "description": "Widely cited academic course slides covering remote procedure calls (RPC), threads, and consensus."
+          }
+        ],
+        "videos": [
+          {
+            "id": "res-vid-1",
+            "title": "NPTEL: Distributed Systems - IIT Kharagpur (Dr. Rajiv Misra)",
+            "url": "https://nptel.ac.in/courses/106106168",
+            "isOfficial": true,
+            "source": "NPTEL / SWAYAM",
+            "status": "active",
+            "lastVerified": "2026-09-08T09:00:00Z",
+            "description": "Official 40-hour lecture course on architectural models, clock synchronization, and Paxos consensus."
+          },
+          {
+            "id": "res-vid-2",
+            "title": "MIT 6.824 Distributed Systems Lecture Series by Robert Morris",
+            "url": "https://youtube.com/playlist?list=PLrw6a1wE39_tb2xeclVnVzT3l526iG2eH",
+            "isOfficial": false,
+            "source": "MIT OpenCourseWare (YouTube)",
+            "status": "active",
+            "lastVerified": "2026-09-07T16:45:00Z",
+            "description": "World-class video lectures on Raft consensus, MapReduce, GFS, and fault-tolerant replication."
+          }
+        ],
+        "classwork": [
+          {
+            "id": "res-cw-1",
+            "title": "Unit 1 & 2 Tutorial Questions & Conceptual Problem Sets",
+            "url": "https://gateoverflow.in",
+            "isOfficial": false,
+            "source": "GATE Overflow Academic",
+            "status": "active",
+            "lastVerified": "2026-09-08T11:20:00Z",
+            "description": "Classwork exercises on clock drift calculations, Chandy-Lamport snapshot algorithms, and vector timestamps."
+          },
+          {
+            "id": "res-cw-2",
+            "title": "Stanford CS244B Course Assignments & Problem Sets",
+            "url": "https://web.stanford.edu/class/cs244b/",
+            "isOfficial": false,
+            "source": "Stanford Classwork Archive",
+            "status": "active",
+            "lastVerified": "2026-09-05T13:10:00Z",
+            "description": "Practical weekly problem sheets exploring distributed hash tables and Byzantine agreement."
+          }
+        ],
+        "labManual": [
+          {
+            "id": "res-lab-1",
+            "title": "CS3551 Distributed Computing Lab Exercises & Experiments Manual",
+            "url": "https://vlab.co.in",
+            "isOfficial": true,
+            "source": "Virtual Labs (MoE Govt of India)",
+            "status": "active",
+            "lastVerified": "2026-09-08T08:30:00Z",
+            "description": "Official Ministry of Education virtual laboratory simulations for socket programming and RPC."
+          },
+          {
+            "id": "res-lab-2",
+            "title": "Distributed Systems Lab Program Guide (RMI, Socket, CORBA)",
+            "url": "https://github.com/topics/distributed-systems-lab",
+            "isOfficial": false,
+            "source": "GitHub Curated Lab Guides",
+            "status": "active",
+            "lastVerified": "2026-09-07T10:15:00Z",
+            "description": "Laboratory exercise guides with step-by-step procedures, sample I/O, and test cases."
+          }
+        ],
+        "practicalQuestions": [
+          {
+            "id": "res-pra-1",
+            "title": "RMI & Socket Programming Hands-on Practice Scenarios",
+            "url": "https://www.w3schools.com/java/",
+            "isOfficial": false,
+            "source": "W3Schools Java",
+            "status": "active",
+            "lastVerified": "2026-09-08T14:00:00Z",
+            "description": "Practical programming problems implementing multi-threaded echo servers and remote method invocation."
+          },
+          {
+            "id": "res-pra-2",
+            "title": "LeetCode / System Design Distributed Key-Value Store Challenges",
+            "url": "https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-Distributed-Key-Value-Store",
+            "isOfficial": false,
+            "source": "LeetCode Discussion",
+            "status": "active",
+            "lastVerified": "2026-09-06T19:00:00Z",
+            "description": "Practical mock exam questions on consistent hashing, gossip protocol, and quorum reads."
+          }
+        ],
+        "questionPapers": [
+          {
+            "id": "res-qp-1",
+            "title": "Anna University Nov/Dec & Apr/May Past Year Question Paper Archive",
+            "url": "https://annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna Univ Exam Cell Portal",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Original University question paper repositories from previous academic cycles."
+          },
+          {
+            "id": "res-qp-2",
+            "title": "VTU / VTU Resource Question Bank for Distributed Computing",
+            "url": "https://vtu.ac.in",
+            "isOfficial": true,
+            "source": "VTU Academic Repository",
+            "status": "active",
+            "lastVerified": "2026-09-07T09:40:00Z",
+            "description": "Model question papers and university semester exam archives."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "id": "res-imp-1",
+            "title": "2-Mark & 13/16-Mark High Probability Questions (Units I to V)",
+            "url": "https://www.sanfoundry.com/distributed-systems-questions-answers/",
+            "isOfficial": false,
+            "source": "Sanfoundry Question Bank",
+            "status": "active",
+            "lastVerified": "2026-09-08T15:20:00Z",
+            "description": "Curated collection of 100+ most frequent university exam questions with answer hints."
+          },
+          {
+            "id": "res-imp-2",
+            "title": "Distributed Computing Comprehensive Viva & Exam Review",
+            "url": "https://www.geeksforgeeks.org/distributed-system-interview-questions/",
+            "isOfficial": false,
+            "source": "GeeksforGeeks",
+            "status": "active",
+            "lastVerified": "2026-09-08T11:50:00Z",
+            "description": "Summary of repeated theoretical derivations, comparative tables, and algorithm steps."
+          }
+        ],
+        "otherResources": [
+          {
+            "id": "res-oth-1",
+            "title": "Distributed Systems 3rd Edition - Tanenbaum & Van Steen (Free Web Edition)",
+            "url": "https://www.distributed-systems.net/index.php/books/ds3/",
+            "isOfficial": true,
+            "source": "Distributed-Systems.net (Authors' Official)",
+            "status": "active",
+            "lastVerified": "2026-09-08T07:15:00Z",
+            "description": "Official authorized open textbook website with downloadable chapters and slides."
+          },
+          {
+            "id": "res-oth-2",
+            "title": "Designing Data-Intensive Applications (Martin Kleppmann Reference Guide)",
+            "url": "https://dataintensive.net",
+            "isOfficial": false,
+            "source": "Martin Kleppmann Website",
+            "status": "active",
+            "lastVerified": "2026-09-07T12:30:00Z",
+            "description": "Definitive companion reading for distributed consensus, transactions, and partitioning."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cs3591",
+      "code": "CS3591",
+      "name": "Computer Networks",
+      "regulationId": "reg-2024",
+      "departmentId": "cse",
+      "semesterId": 5,
+      "credits": 4,
+      "category": "Professional Core",
+      "summary": "Layered network architecture, data link protocols, routing algorithms, transport layer (TCP/UDP), congestion control, and network security basics.",
+      "tags": [
+        "Networks",
+        "OSI Model",
+        "TCP/IP",
+        "Routing",
+        "Socket Programming"
+      ],
+      "resources": {
+        "syllabus": [
+          {
+            "id": "cn-syl-1",
+            "title": "Anna University Official CS3591 Syllabus Document",
+            "url": "https://cac.annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University CAC",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:30:00Z",
+            "description": "Syllabus covering OSI, TCP/IP, routing protocols, and transport layer mechanics."
+          }
+        ],
+        "notes": [
+          {
+            "id": "cn-not-1",
+            "title": "Computer Networks Lecture Notes & Tutorials by Kurose & Ross",
+            "url": "https://gaia.cs.umass.edu/kurose_ross/",
+            "isOfficial": false,
+            "source": "UMass Kurose & Ross",
+            "status": "active",
+            "lastVerified": "2026-09-08T14:00:00Z",
+            "description": "Standard top-down approach chapter slides and interactive applets."
+          }
+        ],
+        "videos": [
+          {
+            "id": "cn-vid-1",
+            "title": "NPTEL: Computer Networks by Prof. Sujoy Ghosh (IIT Kharagpur)",
+            "url": "https://nptel.ac.in/courses/106105081",
+            "isOfficial": true,
+            "source": "NPTEL",
+            "status": "active",
+            "lastVerified": "2026-09-08T09:00:00Z",
+            "description": "Full NPTEL video series covering physical to application layer protocols."
+          }
+        ],
+        "classwork": [
+          {
+            "id": "cn-cw-1",
+            "title": "Subnetting & IP Addressing Practice Problem Worksheets",
+            "url": "https://www.subnetting.net",
+            "isOfficial": false,
+            "source": "Subnetting.net",
+            "status": "active",
+            "lastVerified": "2026-09-07T11:00:00Z",
+            "description": "Interactive tutorial exercises on CIDR, VLSM, and subnet calculation."
+          }
+        ],
+        "labManual": [
+          {
+            "id": "cn-lab-1",
+            "title": "IIT Bombay Virtual Labs - Computer Networks",
+            "url": "https://vlab.co.in",
+            "isOfficial": true,
+            "source": "Ministry of Education Virtual Labs",
+            "status": "active",
+            "lastVerified": "2026-09-08T08:30:00Z",
+            "description": "Wireshark packet sniffing experiments, ping/traceroute simulations."
+          }
+        ],
+        "practicalQuestions": [
+          {
+            "id": "cn-pra-1",
+            "title": "Socket Programming in C & Python Laboratory Prompts",
+            "url": "https://realpython.com/python-sockets/",
+            "isOfficial": false,
+            "source": "Real Python",
+            "status": "active",
+            "lastVerified": "2026-09-07T16:00:00Z",
+            "description": "Step-by-step practical guides for client-server socket communication."
+          }
+        ],
+        "questionPapers": [
+          {
+            "id": "cn-qp-1",
+            "title": "Anna University Previous Semester Examination Papers",
+            "url": "https://annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University Controller of Exams",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Past question papers for 2021/2022/2023 regulations."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "id": "cn-imp-1",
+            "title": "Essential 2-Mark & 16-Mark Repeated Questions with Explanations",
+            "url": "https://www.sanfoundry.com/1000-computer-networks-questions-answers/",
+            "isOfficial": false,
+            "source": "Sanfoundry",
+            "status": "active",
+            "lastVerified": "2026-09-08T15:00:00Z",
+            "description": "Top exam questions on TCP 3-way handshake, Dijkstra's algorithm, and CSMA/CD."
+          }
+        ],
+        "otherResources": [
+          {
+            "id": "cn-oth-1",
+            "title": "IETF RFC Official Internet Standards Repository",
+            "url": "https://www.rfc-editor.org",
+            "isOfficial": true,
+            "source": "IETF",
+            "status": "active",
+            "lastVerified": "2026-09-07T14:30:00Z",
+            "description": "Official RFC protocol specifications for HTTP, TCP, IP, and DNS."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cs3452",
+      "code": "CS3452",
+      "name": "Theory of Computation",
+      "regulationId": "reg-2024",
+      "departmentId": "cse",
+      "semesterId": 4,
+      "credits": 4,
+      "category": "Professional Core",
+      "summary": "Finite automata, regular expressions, context-free grammars, pushdown automata, Turing machines, and undecidability.",
+      "tags": [
+        "DFA/NFA",
+        "CFG",
+        "PDA",
+        "Turing Machine",
+        "Chomsky Hierarchy"
+      ],
+      "resources": {
+        "syllabus": [
+          {
+            "id": "toc-syl-1",
+            "title": "CS3452 Official Syllabus Curriculum",
+            "url": "https://cac.annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Full unit-wise objectives and references for Automata Theory."
+          }
+        ],
+        "notes": [
+          {
+            "id": "toc-not-1",
+            "title": "Automata & Computability Lecture Notes by Jeffrey Ullman",
+            "url": "http://infolab.stanford.edu/~ullman/ialc.html",
+            "isOfficial": false,
+            "source": "Stanford InfoLab",
+            "status": "active",
+            "lastVerified": "2026-09-07T13:00:00Z",
+            "description": "Companion notes to the classic Hopcroft, Motwani, Ullman textbook."
+          }
+        ],
+        "videos": [
+          {
+            "id": "toc-vid-1",
+            "title": "NPTEL: Theory of Computation by Prof. Somenath Biswas (IIT Kanpur)",
+            "url": "https://nptel.ac.in/courses/106104028",
+            "isOfficial": true,
+            "source": "NPTEL",
+            "status": "active",
+            "lastVerified": "2026-09-08T09:00:00Z",
+            "description": "Comprehensive lecture course on automata, grammars, and Turing machines."
+          }
+        ],
+        "classwork": [
+          {
+            "id": "toc-cw-1",
+            "title": "Automata Construction & Grammar Derivation Problem Sheets",
+            "url": "https://gateoverflow.in",
+            "isOfficial": false,
+            "source": "GATE Overflow",
+            "status": "active",
+            "lastVerified": "2026-09-08T11:00:00Z",
+            "description": "Practice exercises for NFA to DFA minimization and pumping lemma."
+          }
+        ],
+        "labManual": [
+          {
+            "id": "toc-lab-1",
+            "title": "JFLAP Software Simulation Guide & Lab Experiments",
+            "url": "https://www.jflap.org",
+            "isOfficial": true,
+            "source": "Duke University JFLAP",
+            "status": "active",
+            "lastVerified": "2026-09-07T15:00:00Z",
+            "description": "Hands-on visual tool for designing finite state machines and PDAs."
+          }
+        ],
+        "practicalQuestions": [
+          {
+            "id": "toc-pra-1",
+            "title": "Lexical Analyzer and Parser Simulation in C / Flex",
+            "url": "https://www.geeksforgeeks.org/introduction-to-yacc/",
+            "isOfficial": false,
+            "source": "GeeksforGeeks",
+            "status": "active",
+            "lastVerified": "2026-09-08T12:00:00Z",
+            "description": "Code implementations of DFA simulators and grammar parsers."
+          }
+        ],
+        "questionPapers": [
+          {
+            "id": "toc-qp-1",
+            "title": "Previous Years Question Papers for Theory of Computation",
+            "url": "https://annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Exam question papers covering all 5 units."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "id": "toc-imp-1",
+            "title": "Key Important Questions on Pumping Lemma and Turing Machines",
+            "url": "https://www.sanfoundry.com/automata-theory-questions-answers/",
+            "isOfficial": false,
+            "source": "Sanfoundry",
+            "status": "active",
+            "lastVerified": "2026-09-08T14:30:00Z",
+            "description": "Repeated semester exam questions with solutions."
+          }
+        ],
+        "otherResources": [
+          {
+            "id": "toc-oth-1",
+            "title": "Michael Sipser Introduction to the Theory of Computation Guide",
+            "url": "https://math.mit.edu/~sipser/book.html",
+            "isOfficial": true,
+            "source": "MIT Math Department",
+            "status": "active",
+            "lastVerified": "2026-09-07T17:00:00Z",
+            "description": "Author's official errata, solutions manual, and teaching resources."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ai3501",
+      "code": "AI3501",
+      "name": "Deep Learning",
+      "regulationId": "reg-2024",
+      "departmentId": "aids",
+      "semesterId": 5,
+      "credits": 3,
+      "category": "Professional Core",
+      "summary": "Neural network foundations, backpropagation, CNNs for computer vision, RNNs/Transformers for NLP, and generative models.",
+      "tags": [
+        "Deep Learning",
+        "CNN",
+        "RNN",
+        "Transformers",
+        "PyTorch"
+      ],
+      "resources": {
+        "syllabus": [
+          {
+            "id": "ai-syl-1",
+            "title": "Official AI & DS Deep Learning Syllabus Curriculum",
+            "url": "https://cac.annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Complete course objectives and unit-wise topic lists."
+          }
+        ],
+        "notes": [
+          {
+            "id": "ai-not-1",
+            "title": "Deep Learning Book by Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+            "url": "https://www.deeplearningbook.org",
+            "isOfficial": true,
+            "source": "MIT Press (Official Free Online)",
+            "status": "active",
+            "lastVerified": "2026-09-08T11:00:00Z",
+            "description": "The gold standard textbook freely accessible online."
+          }
+        ],
+        "videos": [
+          {
+            "id": "ai-vid-1",
+            "title": "NPTEL: Deep Learning by Prof. Mitesh Khapra (IIT Madras)",
+            "url": "https://nptel.ac.in/courses/106106184",
+            "isOfficial": true,
+            "source": "NPTEL",
+            "status": "active",
+            "lastVerified": "2026-09-08T09:30:00Z",
+            "description": "In-depth video lectures from feedforward nets to attention mechanisms."
+          }
+        ],
+        "classwork": [
+          {
+            "id": "ai-cw-1",
+            "title": "Stanford CS231n Computer Vision Assignment Problem Sets",
+            "url": "http://cs231n.stanford.edu/",
+            "isOfficial": false,
+            "source": "Stanford University",
+            "status": "active",
+            "lastVerified": "2026-09-07T12:00:00Z",
+            "description": "Rigorous math exercises and loss function derivations."
+          }
+        ],
+        "labManual": [
+          {
+            "id": "ai-lab-1",
+            "title": "PyTorch Official Tutorials & Lab Workbooks",
+            "url": "https://pytorch.org/tutorials/",
+            "isOfficial": true,
+            "source": "PyTorch Foundation",
+            "status": "active",
+            "lastVerified": "2026-09-08T13:00:00Z",
+            "description": "Interactive Jupyter Notebook experiments for training neural networks."
+          }
+        ],
+        "practicalQuestions": [
+          {
+            "id": "ai-pra-1",
+            "title": "Kaggle Getting Started Competitions & Notebook Exercises",
+            "url": "https://www.kaggle.com/learn/intro-to-deep-learning",
+            "isOfficial": false,
+            "source": "Kaggle",
+            "status": "active",
+            "lastVerified": "2026-09-08T15:00:00Z",
+            "description": "Hands-on projects covering MNIST, transfer learning, and ResNet."
+          }
+        ],
+        "questionPapers": [
+          {
+            "id": "ai-qp-1",
+            "title": "AI & DS Semester Examination Question Papers",
+            "url": "https://annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Past model papers for Deep Learning."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "id": "ai-imp-1",
+            "title": "Repeated Exam Questions on Optimizers, Vanishing Gradients & Attention",
+            "url": "https://www.geeksforgeeks.org/deep-learning-interview-questions/",
+            "isOfficial": false,
+            "source": "GeeksforGeeks",
+            "status": "active",
+            "lastVerified": "2026-09-08T16:00:00Z",
+            "description": "Frequently asked 2-mark and 16-mark questions with answers."
+          }
+        ],
+        "otherResources": [
+          {
+            "id": "ai-oth-1",
+            "title": "Hugging Face Course on Transformers & Modern LLMs",
+            "url": "https://huggingface.co/learn/nlp-course",
+            "isOfficial": true,
+            "source": "Hugging Face",
+            "status": "active",
+            "lastVerified": "2026-09-08T14:00:00Z",
+            "description": "Modern guide to fine-tuning state-of-the-art transformer architectures."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ec3451",
+      "code": "EC3451",
+      "name": "Linear Integrated Circuits",
+      "regulationId": "reg-2024",
+      "departmentId": "ece",
+      "semesterId": 4,
+      "credits": 3,
+      "category": "Professional Core",
+      "summary": "Operational amplifier characteristics, linear and non-linear applications, active filters, 555 timer, PLL, and voltage regulators.",
+      "tags": [
+        "Op-Amp",
+        "555 Timer",
+        "PLL",
+        "Active Filters",
+        "Analog Circuits"
+      ],
+      "resources": {
+        "syllabus": [
+          {
+            "id": "lic-syl-1",
+            "title": "Anna University Official EC3451 Syllabus Specification",
+            "url": "https://cac.annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Unit I through Unit V syllabus on Op-Amps and analog ICs."
+          }
+        ],
+        "notes": [
+          {
+            "id": "lic-not-1",
+            "title": "Linear ICs Course Notes by Texas Instruments University Program",
+            "url": "https://www.ti.com/general/docs/university.tsp",
+            "isOfficial": true,
+            "source": "Texas Instruments",
+            "status": "active",
+            "lastVerified": "2026-09-07T14:00:00Z",
+            "description": "Comprehensive notes and application guides for op-amps and analog ICs."
+          }
+        ],
+        "videos": [
+          {
+            "id": "lic-vid-1",
+            "title": "NPTEL: Integrated Circuits, MOSFETs, OP-Amps and their Applications",
+            "url": "https://nptel.ac.in/courses/108108111",
+            "isOfficial": true,
+            "source": "NPTEL (IISc Bangalore)",
+            "status": "active",
+            "lastVerified": "2026-09-08T09:00:00Z",
+            "description": "Prof. Hardik J. Pandya lectures on analog integrated circuit design."
+          }
+        ],
+        "classwork": [
+          {
+            "id": "lic-cw-1",
+            "title": "Op-Amp Derivation and Filter Design Problem Sets",
+            "url": "https://www.electronics-tutorials.ws/opamp/op-amp-multivibrator.html",
+            "isOfficial": false,
+            "source": "Electronics Tutorials",
+            "status": "active",
+            "lastVerified": "2026-09-07T16:00:00Z",
+            "description": "Classwork questions for Schmitt triggers and multivibrators."
+          }
+        ],
+        "labManual": [
+          {
+            "id": "lic-lab-1",
+            "title": "Virtual Labs Analog Electronics & Linear IC Lab Experiments",
+            "url": "https://vlab.co.in",
+            "isOfficial": true,
+            "source": "MoE Virtual Labs",
+            "status": "active",
+            "lastVerified": "2026-09-08T08:30:00Z",
+            "description": "Simulations for inverting/non-inverting amplifiers and 555 timers."
+          }
+        ],
+        "practicalQuestions": [
+          {
+            "id": "lic-pra-1",
+            "title": "LTspice Simulation Circuit Schematics & Test Questions",
+            "url": "https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html",
+            "isOfficial": true,
+            "source": "Analog Devices LTspice",
+            "status": "active",
+            "lastVerified": "2026-09-08T11:00:00Z",
+            "description": "Practical circuit simulation test prompts."
+          }
+        ],
+        "questionPapers": [
+          {
+            "id": "lic-qp-1",
+            "title": "Anna University ECE Linear Integrated Circuits Past Exam Papers",
+            "url": "https://annauniv.edu",
+            "isOfficial": true,
+            "source": "Anna University Exam Archive",
+            "status": "active",
+            "lastVerified": "2026-09-08T10:00:00Z",
+            "description": "Previous exam papers with model keys."
+          }
+        ],
+        "importantQuestions": [
+          {
+            "id": "lic-imp-1",
+            "title": "Repeated Exam Questions on 555 Monostable & Inverting Amplifiers",
+            "url": "https://www.sanfoundry.com/linear-integrated-circuits-questions-answers/",
+            "isOfficial": false,
+            "source": "Sanfoundry",
+            "status": "active",
+            "lastVerified": "2026-09-08T14:00:00Z",
+            "description": "Curated 2-mark and 16-mark questions with answers."
+          }
+        ],
+        "otherResources": [
+          {
+            "id": "lic-oth-1",
+            "title": "Analog Devices Op-Amp Applications Handbook (Walt Kester)",
+            "url": "https://www.analog.com/en/resources/technical-books/op-amp-applications-handbook.html",
+            "isOfficial": true,
+            "source": "Analog Devices Official",
+            "status": "active",
+            "lastVerified": "2026-09-07T15:30:00Z",
+            "description": "Authoritative handbook on operational amplifier circuit design."
+          }
+        ]
+      }
+    }
+  ],
+  "categoryMetadata": {
+    "syllabus": {
+      "title": "Syllabus",
+      "icon": "📘",
+      "badge": "Official Curriculum",
+      "color": "#c58f68"
+    },
+    "notes": {
+      "title": "Notes",
+      "icon": "📝",
+      "badge": "Study Materials",
+      "color": "#d47a60"
+    },
+    "videos": {
+      "title": "Explanation Videos",
+      "icon": "🎥",
+      "badge": "Video Lectures",
+      "color": "#c88d67"
+    },
+    "classwork": {
+      "title": "Classwork (CW)",
+      "icon": "📑",
+      "badge": "Tutorials & Sets",
+      "color": "#d4a373"
+    },
+    "labManual": {
+      "title": "Lab Manual",
+      "icon": "🧪",
+      "badge": "Laboratory Manuals",
+      "color": "#7ca982"
+    },
+    "practicalQuestions": {
+      "title": "Practical Questions",
+      "icon": "💻",
+      "badge": "Coding & Exercises",
+      "color": "#e09f55"
+    },
+    "questionPapers": {
+      "title": "Previous Question Papers",
+      "icon": "📄",
+      "badge": "Past Exam Papers",
+      "color": "#b07d62"
+    },
+    "importantQuestions": {
+      "title": "Important Questions",
+      "icon": "⭐",
+      "badge": "High Yield Questions",
+      "color": "#c85a48"
+    },
+    "otherResources": {
+      "title": "Other Resources",
+      "icon": "🔗",
+      "badge": "Textbooks & References",
+      "color": "#b89078"
+    }
+  }
+}

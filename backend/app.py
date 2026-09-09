@@ -16,45 +16,67 @@ app = Flask(__name__, static_folder=None)
 CORS(app)  # Enable Cross-Origin requests from the frontend
 
 DATA_FILE = os.path.join(os.path.dirname(__file__), "academic_store.json")
+IN_MEMORY_DB = None
 
-# Helper to load dataset
+# Helper to load dataset safely in serverless environments
 def get_db():
-    if not os.path.exists(DATA_FILE):
-        # Fallback: create empty schema structure
-        initial = {
-            "regulations": [
-                {"id": "reg-2024", "year": "2024", "name": "2024 Regulation (Autonomous & CBCS)", "isLatest": True, "description": "Latest curriculum with AI/ML integration and industry credits."},
-                {"id": "reg-2021", "year": "2021", "name": "2021 Regulation (Anna Univ & Affiliated)", "isLatest": False, "description": "Standard outcome-based education (OBE) curriculum."},
-                {"id": "reg-2017", "year": "2017", "name": "2017 Regulation", "isLatest": False, "description": "Prior CBCS syllabus system."}
-            ],
-            "departments": [
-                {"id": "cse", "code": "CSE", "name": "Computer Science & Engineering", "icon": "💻", "color": "#3b82f6"},
-                {"id": "aids", "code": "AI & DS", "name": "Artificial Intelligence & Data Science", "icon": "🤖", "color": "#8b5cf6"},
-                {"id": "it", "code": "IT", "name": "Information Technology", "icon": "🌐", "color": "#06b6d4"},
-                {"id": "ece", "code": "ECE", "name": "Electronics & Communication Engineering", "icon": "⚡", "color": "#f59e0b"},
-                {"id": "mech", "code": "MECH", "name": "Mechanical Engineering", "icon": "⚙️", "color": "#10b981"}
-            ],
-            "semesters": [
-                {"id": 1, "name": "Semester 1", "badge": "Year 1"},
-                {"id": 2, "name": "Semester 2", "badge": "Year 1"},
-                {"id": 3, "name": "Semester 3", "badge": "Year 2"},
-                {"id": 4, "name": "Semester 4", "badge": "Year 2"},
-                {"id": 5, "name": "Semester 5", "badge": "Year 3"},
-                {"id": 6, "name": "Semester 6", "badge": "Year 3"},
-                {"id": 7, "name": "Semester 7", "badge": "Year 4"},
-                {"id": 8, "name": "Semester 8", "badge": "Year 4"}
-            ],
-            "subjects": []
-        }
-        save_db(initial)
-        return initial
+    global IN_MEMORY_DB
+    if IN_MEMORY_DB is not None:
+        return IN_MEMORY_DB
     
-    with open(DATA_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    # Try reading from DATA_FILE or /tmp/academic_store.json
+    for path in ["/tmp/academic_store.json", DATA_FILE]:
+        if os.path.exists(path):
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    IN_MEMORY_DB = json.load(f)
+                    return IN_MEMORY_DB
+            except Exception as e:
+                print(f"Failed to read {path}: {e}")
+
+    # Fallback: create empty schema structure
+    initial = {
+        "regulations": [
+            {"id": "reg-2024", "year": "2024", "name": "2024 Regulation (Autonomous & CBCS)", "isLatest": True, "description": "Latest curriculum with AI/ML integration and industry credits."},
+            {"id": "reg-2021", "year": "2021", "name": "2021 Regulation (Anna Univ & Affiliated)", "isLatest": False, "description": "Standard outcome-based education (OBE) curriculum."},
+            {"id": "reg-2017", "year": "2017", "name": "2017 Regulation", "isLatest": False, "description": "Prior CBCS syllabus system."}
+        ],
+        "departments": [
+            {"id": "cse", "code": "CSE", "name": "Computer Science & Engineering", "icon": "💻", "color": "#c58f68"},
+            {"id": "aids", "code": "AI & DS", "name": "Artificial Intelligence & Data Science", "icon": "🤖", "color": "#d47a60"},
+            {"id": "it", "code": "IT", "name": "Information Technology", "icon": "🌐", "color": "#d4a373"},
+            {"id": "ece", "code": "ECE", "name": "Electronics & Communication Engineering", "icon": "⚡", "color": "#e09f55"},
+            {"id": "mech", "code": "MECH", "name": "Mechanical Engineering", "icon": "⚙️", "color": "#a3886f"}
+        ],
+        "semesters": [
+            {"id": 1, "name": "Semester 1", "badge": "Year 1"},
+            {"id": 2, "name": "Semester 2", "badge": "Year 1"},
+            {"id": 3, "name": "Semester 3", "badge": "Year 2"},
+            {"id": 4, "name": "Semester 4", "badge": "Year 2"},
+            {"id": 5, "name": "Semester 5", "badge": "Year 3"},
+            {"id": 6, "name": "Semester 6", "badge": "Year 3"},
+            {"id": 7, "name": "Semester 7", "badge": "Year 4"},
+            {"id": 8, "name": "Semester 8", "badge": "Year 4"}
+        ],
+        "subjects": []
+    }
+    IN_MEMORY_DB = initial
+    save_db(initial)
+    return IN_MEMORY_DB
 
 def save_db(data):
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    global IN_MEMORY_DB
+    IN_MEMORY_DB = data
+    for target in ["/tmp/academic_store.json", DATA_FILE]:
+        try:
+            target_dir = os.path.dirname(target)
+            if target_dir and not os.path.exists(target_dir):
+                os.makedirs(target_dir, exist_ok=True)
+            with open(target, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            break
+        except Exception:
+            continue
 
 # --- Routes ---
 
@@ -203,7 +225,21 @@ def verify_link():
             "verified_at": datetime.utcnow().isoformat()
         })
 
-STATIC_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+def find_static_file(rel_path):
+    candidates = [
+        os.path.abspath(os.path.dirname(__file__)),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..")),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "static"))
+    ]
+    for directory in candidates:
+        full_path = os.path.join(directory, rel_path)
+        if os.path.isfile(full_path):
+            return directory, rel_path
+    # Fallback to index.html from any candidate directory
+    for directory in candidates:
+        if os.path.isfile(os.path.join(directory, "index.html")):
+            return directory, "index.html"
+    return candidates[0], "index.html"
 
 # Serve Frontend Static Assets and Single-Page Application Index
 @app.route("/", defaults={"path": ""}, methods=["GET"])
@@ -213,15 +249,9 @@ def serve_frontend(path):
     if path.startswith("api"):
         return jsonify({"error": "API route not found"}), 404
         
-    if not path or path == "index.html":
-        return send_from_directory(STATIC_DIR, "index.html")
-    
-    file_path = os.path.join(STATIC_DIR, path)
-    if os.path.isfile(file_path):
-        return send_from_directory(STATIC_DIR, path)
-        
-    # Fallback to index.html for client-side routing
-    return send_from_directory(STATIC_DIR, "index.html")
+    req_file = "index.html" if not path else path
+    directory, filename = find_static_file(req_file)
+    return send_from_directory(directory, filename)
 
 if __name__ == "__main__":
     print("🎓 Student Academic Hub Backend starting at http://127.0.0.1:5000")
